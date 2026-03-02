@@ -2,26 +2,32 @@
 
 :root {
     --primary: #4f46e5;
-    --primary-hover: #4338ca;
+    --primary-light: #818cf8;
+    --primary-dark: #3730a3;
+    --accent: #0ea5e9;
     --bg-slate: #f8fafc;
     --text-slate: #0f172a;
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
 }
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     scroll-behavior: smooth;
+    background-color: var(--bg-slate);
+    color: var(--text-slate);
 }
 
+/* Animations */
 .animate-in {
-    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(40px);
     }
 
     to {
@@ -30,20 +36,44 @@ body {
     }
 }
 
+@keyframes bounce-slow {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.animate-bounce-slow {
+    animation: bounce-slow 4s ease-in-out infinite;
+}
+
+/* Tabs */
 .tab-content {
     display: none;
 }
 
 .tab-content.active {
     display: block;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.tab-button {
+    color: #64748b;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tab-button.active {
     background-color: white;
     color: var(--primary);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.2);
 }
 
+/* Marquee */
 .marquee {
     display: flex;
     overflow: hidden;
@@ -57,7 +87,7 @@ body {
     justify-content: space-around;
     min-width: 100%;
     gap: 4rem;
-    animation: scroll 30s linear infinite;
+    animation: scroll 40s linear infinite;
 }
 
 @keyframes scroll {
@@ -70,12 +100,13 @@ body {
     }
 }
 
+/* Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f8fafc;
+    background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -83,45 +114,53 @@ body {
     border-radius: 10px;
 }
 
-:root {
-    --primary: #4f46e5;
-    --primary-light: #818cf8;
-    --primary-dark: #3730a3;
-    --accent: #0ea5e9;
-    --bg-slate: #f8fafc;
-    --text-slate: #0f172a;
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.3);
-    --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
 }
 
-/* Glassmorphism Classes */
+/* Glassmorphism */
 .glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
 }
 
 .glass-dark {
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Custom Scroll Progress Bar */
+/* Scroll Progress */
 #scroll-progress {
     position: fixed;
     top: 0;
     left: 0;
     width: 0%;
-    height: 4px;
+    height: 5px;
     background: linear-gradient(90deg, var(--primary), var(--accent));
-    z-index: 1000;
+    z-index: 9999;
+    transition: width 0.1s ease-out;
 }
 
-/* Redesign Enhancements */
+/* Hero & Cards */
+.hero-gradient {
+    background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.08), transparent),
+        radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.08), transparent);
+}
+
+.card-hover {
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.12);
+}
+
 .nav-link {
     position: relative;
     overflow: hidden;
@@ -136,23 +175,21 @@ body {
     height: 2px;
     background: var(--primary);
     transform: translateX(-101%);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
 }
 
 .nav-link:hover::after {
     transform: translateX(0);
 }
 
-.hero-gradient {
-    background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.05), transparent),
-        radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.05), transparent);
-}
-
-.card-hover {
+button {
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.card-hover:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--card-shadow);
+button:active {
+    transform: scale(0.96);
+}
+
+.shadow-3xl {
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.15);
 }
