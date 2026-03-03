@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupInteractions();
 
-    // Reveal animations
+    // Staggered Reveal Logic
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -56,10 +56,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    document.querySelectorAll('.card, .section-title, .hero-content, .premium-image-wrapper').forEach(el => {
+    const reveals = document.querySelectorAll('.card, .section-title, .hero-content, .premium-image-wrapper, .timeline-item');
+    reveals.forEach((el, index) => {
         el.classList.add('reveal');
+        // Add staggering based on index within parent containers
+        const parent = el.parentElement;
+        const siblings = Array.from(parent.children).filter(c => c.classList.contains('reveal') || c.tagName === el.tagName);
+        const relativeIndex = siblings.indexOf(el);
+        el.style.setProperty('--delay', relativeIndex);
+        el.classList.add('stagger');
         observer.observe(el);
     });
+
+    // Reveal logic ends here
 
     // Social Media Carousel
     const slides = document.querySelectorAll('.carousel-slide');

@@ -370,6 +370,11 @@ section {
     opacity: 0;
     transform: translateY(40px);
     transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.stagger {
+    transition-delay: calc(var(--delay) * 0.1s);
 }
 
 .reveal-active {
@@ -377,12 +382,205 @@ section {
     transform: translateY(0);
 }
 
-/* Grid Layouts */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+/* Horizontal Timeline - Alternating Zigzag Style */
+.timeline-container {
+    width: 100%;
+    overflow: hidden;
+    /* No sideways scrolling */
+    padding: 150px 0;
+    margin: 50px 0;
+    position: relative;
 }
+
+.timeline-container::-webkit-scrollbar {
+    display: none;
+}
+
+.timeline-track {
+    display: flex;
+    width: 100%;
+    padding: 0 5%;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    /* Spread items evenly */
+    height: 400px;
+}
+
+.timeline-track::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.3;
+    transform: translateY(-50%);
+}
+
+.timeline-item {
+    flex: 1;
+    /* Equal width for all items */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 25%;
+    /* For 4 items */
+}
+
+.timeline-dot {
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px var(--accent);
+    z-index: 10;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: translate(-50%, -50%) scale(1.3);
+}
+
+.timeline-connector {
+    position: absolute;
+    width: 1px;
+    background: var(--accent);
+    opacity: 0.3;
+}
+
+.timeline-item.bottom .timeline-connector {
+    top: 50%;
+    height: 80px;
+}
+
+.timeline-item.top .timeline-connector {
+    bottom: 50%;
+    height: 80px;
+}
+
+.timeline-content {
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    /* Responsive width within the item */
+    max-width: 240px;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+}
+
+.timeline-item.bottom .timeline-content {
+    margin-top: 240px;
+}
+
+.timeline-item.top .timeline-content {
+    margin-bottom: 240px;
+    order: -1;
+}
+
+.timeline-item:hover .timeline-content {
+    border-color: var(--accent);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.timeline-date {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.timeline-role {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--text-light);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+}
+
+.timeline-company {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Logo Marquee */
+.logo-marquee {
+    width: 100%;
+    margin: 40px 0;
+    overflow: hidden;
+    background: #050a15;
+    padding: 20px 0;
+    position: relative;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, transparent, var(--accent), transparent) 1;
+    display: flex;
+    align-items: center;
+}
+
+.logo-marquee::before,
+.logo-marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.logo-marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, #050a15, transparent);
+}
+
+.logo-marquee::after {
+    right: 0;
+    background: linear-gradient(-90deg, #050a15, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-strip {
+    height: 180px;
+    /* Larger size to fill the strip */
+    display: block;
+    object-fit: contain;
+    padding: 0;
+    /* Remove padding for seamless loop */
+    filter: brightness(1.2) contrast(1.1);
+    transition: var(--transition);
+}
+
+.marquee-strip:hover {
+    filter: brightness(1.2) contrast(1.2);
+    transform: scale(1.05);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Ensure the marquee content is duplicated for seamless looping */
 
 .card {
     padding: 30px;
@@ -397,6 +595,16 @@ section {
 .card h3 {
     color: var(--accent);
     margin-bottom: 15px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
 }
 
 @media (max-width: 992px) {

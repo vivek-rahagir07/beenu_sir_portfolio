@@ -32,36 +32,60 @@
         </ul>
     </nav>
 
-    <section style="padding-top: 150px;">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="card glass" style="margin-bottom: 50px;">
-            <div style="display: flex; flex-direction: column; gap: 30px;">
-                <div style="border-left: 2px solid var(--accent); padding-left: 20px;">
-                    <h3 style="color: var(--accent);">Director</h3>
-                    <p style="font-weight: 600;">Getting Roots Coaching and Training Pvt. Ltd.</p>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">June '18 - Present</p>
+    <section style="padding-top: 150px; overflow-x: hidden;">
+        <h2 class="section-title">Professional Journey</h2>
+
+        <div class="timeline-container">
+            <div class="timeline-track">
+                <!-- Milestone 1 -->
+                <div class="timeline-item bottom reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content glass">
+                        <span class="timeline-date">2018 - PRESENT</span>
+                        <h3 class="timeline-role">Director</h3>
+                        <p class="timeline-company">Getting Roots Coaching and Training</p>
+                    </div>
                 </div>
-                <div style="border-left: 2px solid var(--accent); padding-left: 20px;">
-                    <h3 style="color: var(--accent);">Training Consultant & Life Coach</h3>
-                    <p style="font-weight: 600;">Independent Consultant</p>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">April '10 - May '18</p>
+
+                <!-- Milestone 2 -->
+                <div class="timeline-item top reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content glass">
+                        <span class="timeline-date">2010 - 2018</span>
+                        <h3 class="timeline-role">Training Consultant</h3>
+                        <p class="timeline-company">Independent Consultant & Coach</p>
+                    </div>
                 </div>
-                <div style="border-left: 2px solid var(--accent); padding-left: 20px;">
-                    <h3 style="color: var(--accent);">Lead Trainer (SPOC)</h3>
-                    <p style="font-weight: 600;">Hero MindMine Institute Ltd.</p>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Aug '07 - March '10</p>
+
+                <!-- Milestone 3 -->
+                <div class="timeline-item bottom reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content glass">
+                        <span class="timeline-date">2007 - 2010</span>
+                        <h3 class="timeline-role">Lead Trainer (SPOC)</h3>
+                        <p class="timeline-company">Hero MindMine Institute Ltd.</p>
+                    </div>
                 </div>
-                <div style="border-left: 2px solid var(--accent); padding-left: 20px;">
-                    <h3 style="color: var(--accent);">Resolution Expert</h3>
-                    <p style="font-weight: 600;">Dell International Services India Pvt. Ltd.</p>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">March '06 - July '07</p>
+
+                <!-- Milestone 4 -->
+                <div class="timeline-item top reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content glass">
+                        <span class="timeline-date">2006 - 2007</span>
+                        <h3 class="timeline-role">Resolution Expert</h3>
+                        <p class="timeline-company">Dell International Services India</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">Programme Details</h2>
+        <h2 class="section-title" style="margin-top: 100px;">Programme Details</h2>
         <div class="grid">
-            <div class="card glass">
+            <div class="card glass reveal" style="--delay: 1;">
                 <h3>Core Training Modules</h3>
                 <ul
                     style="list-style: none; color: var(--text-muted); display: flex; flex-direction: column; gap: 10px;">
@@ -78,18 +102,16 @@
                         (Automobile)</li>
                 </ul>
             </div>
-            <div class="card glass">
-                <h3>Our Elite Clients</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 15px; color: var(--text-light);">
-                    <span class="btn" style="padding: 5px 15px; font-size: 0.8rem;">HDFC Bank</span>
-                    <span class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Samsung</span>
-                    <span class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Dell Inc.</span>
-                    <span class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Hero MotoCorp</span>
-                    <span class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Axis Bank</span>
-                    <span class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Nikon</span>
-                    <span class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Blackberry</span>
-                    <span class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Fortis</span>
-                    <span class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Amneal Pharma</span>
+        </div>
+
+        <div style="margin-top: 80px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <h3
+                style="text-align: center; font-size: 2rem; margin-bottom: 30px; font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent);">
+                Our Elite Clients</h3>
+            <div class="logo-marquee">
+                <div class="marquee-content">
+                    <img src="assets/client_logos.png" alt="Client Logos" class="marquee-strip">
+                    <img src="assets/client_logos.png" alt="Client Logos" class="marquee-strip">
                 </div>
             </div>
         </div>
