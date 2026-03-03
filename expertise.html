@@ -21,7 +21,9 @@
 
     <!-- Navigation -->
     <nav id="navbar">
-        <a href="index.html" class="logo">BEENU K. TANEJA</a>
+        <a href="index.html" class="logo">
+            <img src="assets/images/signature.png" alt="Signature" class="signature-logo">
+        </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -32,37 +34,90 @@
         </ul>
     </nav>
 
-    <section style="padding-top: 200px;">
+    <section class="page-header container expertise-section">
         <h2 class="section-title">Academic Expertise</h2>
-        <div class="grid">
-            <div class="card glass">
+        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div class="card glass interactive-card">
+                <div class="card-glow"></div>
                 <h3>Visiting Faculty</h3>
-                <p style="color: var(--text-muted); margin-bottom: 20px;">Shaping minds at top-tier universities:</p>
-                <ul style="list-style: none; color: var(--accent);">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-university"></i> BML Munjal University</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-university"></i> DSEU (Delhi Skill & Ent.)</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-university"></i> Kumaun University</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-university"></i> SRM University</li>
-                </ul>
-            </div>
-            <div class="card glass">
-                <h3>Specialized Subjects</h3>
-                <div style="display: flex; flex-direction: column; gap: 15px;">
-                    <div>
-                        <strong style="color: var(--text-light);">Management:</strong>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Critical Reasoning, Personal Branding,
-                            Strategic Thinking, Entrepreneurship.</p>
+                <p style="color: var(--text-muted); margin-bottom: 25px;">Shaping minds at top-tier universities:</p>
+                <div class="faculty-tiles">
+                    <div class="faculty-tile">
+                        <i class="fas fa-university"></i>
+                        <span>BML Munjal University</span>
                     </div>
-                    <div>
-                        <strong style="color: var(--text-light);">Engineering:</strong>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Problem Solving, Decision Making,
-                            Consulting Skills, Design Thinking.</p>
+                    <div class="faculty-tile">
+                        <i class="fas fa-university"></i>
+                        <span>DSEU (Delhi Skill & Ent.)</span>
                     </div>
-                    <div>
-                        <strong style="color: var(--text-light);">Law:</strong>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Systems Thinking, Logical Reasoning.</p>
+                    <div class="faculty-tile">
+                        <i class="fas fa-university"></i>
+                        <span>Kumaun University</span>
+                    </div>
+                    <div class="faculty-tile">
+                        <i class="fas fa-university"></i>
+                        <span>SRM University</span>
                     </div>
                 </div>
+            </div>
+            <div class="card glass interactive-card">
+                <div class="card-glow"></div>
+                <h3>Specialized Subjects</h3>
+                <div class="subject-categories">
+                    <div class="subject-category">
+                        <div class="category-header">
+                            <i class="fas fa-chart-line"></i>
+                            <strong>Management</strong>
+                        </div>
+                        <div class="subject-badges">
+                            <span class="subject-badge">Critical Reasoning</span>
+                            <span class="subject-badge">Personal Branding</span>
+                            <span class="subject-badge">Strategic Thinking</span>
+                            <span class="subject-badge">Entrepreneurship</span>
+                        </div>
+                    </div>
+                    <div class="subject-category">
+                        <div class="category-header">
+                            <i class="fas fa-microchip"></i>
+                            <strong>Engineering</strong>
+                        </div>
+                        <div class="subject-badges">
+                            <span class="subject-badge">Problem Solving</span>
+                            <span class="subject-badge">Decision Making</span>
+                            <span class="subject-badge">Consulting Skills</span>
+                            <span class="subject-badge">Design Thinking</span>
+                        </div>
+                    </div>
+                    <div class="subject-category">
+                        <div class="category-header">
+                            <i class="fas fa-gavel"></i>
+                            <strong>Law</strong>
+                        </div>
+                        <div class="subject-badges">
+                            <span class="subject-badge">Systems Thinking</span>
+                            <span class="subject-badge">Logical Reasoning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logo-marquee" style="margin-top: 60px;">
+            <div class="marquee-content">
+                <img src="assets/universities/bmu.png" alt="BML Munjal University" class="university-logo bmu-logo">
+                <img src="assets/universities/dseu.png" alt="DSEU" class="university-logo">
+                <img src="assets/universities/kumaun.png" alt="Kumaun University" class="university-logo">
+                <img src="assets/universities/srm.png" alt="SRM University" class="university-logo">
+                <!-- Duplicate for seamless loop -->
+                <img src="assets/universities/bmu.png" alt="BML Munjal University" class="university-logo bmu-logo">
+                <img src="assets/universities/dseu.png" alt="DSEU" class="university-logo">
+                <img src="assets/universities/kumaun.png" alt="Kumaun University" class="university-logo">
+                <img src="assets/universities/srm.png" alt="SRM University" class="university-logo">
+                <!-- Duplicate again for wider screens -->
+                <img src="assets/universities/bmu.png" alt="BML Munjal University" class="university-logo bmu-logo">
+                <img src="assets/universities/dseu.png" alt="DSEU" class="university-logo">
+                <img src="assets/universities/kumaun.png" alt="Kumaun University" class="university-logo">
+                <img src="assets/universities/srm.png" alt="SRM University" class="university-logo">
             </div>
         </div>
 
@@ -70,23 +125,22 @@
         <div class="grid">
             <div class="card glass">
                 <h3>Professional Certs</h3>
-                <ul
-                    style="list-style: none; color: var(--text-muted); display: flex; flex-direction: column; gap: 15px;">
+                <ul class="detail-list spacing-lg compact-layout">
                     <li>
-                        <strong style="color: var(--accent);">Certified Coach</strong><br>
-                        Manufacturing & IT sectors focus.
+                        <strong>Certified Coach</strong>
+                        <span>Manufacturing & IT sectors focus.</span>
                     </li>
                     <li>
-                        <strong style="color: var(--accent);">EFT Practitioner</strong><br>
-                        Vitality Living College, London.
+                        <strong>EFT Practitioner</strong>
+                        <span>Vitality Living College, London.</span>
                     </li>
                     <li>
-                        <strong style="color: var(--accent);">NLP Certification</strong><br>
-                        Former Country Head trainer, Hero MindMine.
+                        <strong>NLP Certification</strong>
+                        <span>Former Country Head trainer, Hero MindMine.</span>
                     </li>
                     <li>
-                        <strong style="color: var(--accent);">Risk Management & Compliance</strong><br>
-                        Wipro Ltd.
+                        <strong>Risk Management</strong>
+                        <span>Wipro Ltd.</span>
                     </li>
                 </ul>
             </div>
