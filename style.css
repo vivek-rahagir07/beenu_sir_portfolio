@@ -462,18 +462,18 @@ section {
 /* Reveal Animations */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: translateY(30px) scale(0.98);
+    transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
     will-change: transform, opacity;
 }
 
 .reveal.stagger {
-    transition-delay: calc(var(--delay) * 0.1s);
+    transition-delay: calc(var(--delay) * 0.15s);
 }
 
 .reveal-active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 /* Horizontal Timeline - Alternating Zigzag Style */
@@ -481,8 +481,8 @@ section {
     width: 100%;
     overflow: hidden;
     /* No sideways scrolling */
-    padding: 150px 0;
-    margin: 50px 0;
+    padding: 80px 0;
+    margin: 20px 0;
     position: relative;
 }
 
@@ -611,37 +611,58 @@ section {
 
 /* Logo Marquee */
 .logo-marquee {
-    width: 100%;
-    margin: 40px 0;
+    width: 90%;
+    /* Decreased from 100% */
+    max-width: 1200px;
+    /* Constrained max-width */
+    margin: 80px auto;
+    /* Slightly reduced vertical margin */
     overflow: hidden;
     background: var(--primary);
-    padding: 20px 0;
+    padding: 25px 0;
+    /* Decreased vertical width (height) */
     position: relative;
-    border-top: 1px solid var(--glass-border);
-    border-bottom: 1px solid var(--glass-border);
+    border: 1px solid var(--glass-border);
+    /* Full border for better container feel */
+    border-radius: 40px;
+    /* Rounded corners for premium feel */
     display: flex;
     align-items: center;
-}
-
-.logo-marquee::before,
-.logo-marquee::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 150px;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
+    /* Golden Glow Flow */
+    box-shadow: 0 0 50px rgba(var(--accent-rgb), 0.1);
 }
 
 .logo-marquee::before {
-    left: 0;
-    background: linear-gradient(90deg, var(--primary), transparent);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(var(--accent-rgb), 0.05),
+            rgba(var(--accent-rgb), 0.15),
+            rgba(var(--accent-rgb), 0.05),
+            transparent);
+    animation: golden-flow 6s infinite linear;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes golden-flow {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
 }
 
 .logo-marquee::after {
-    right: 0;
-    background: linear-gradient(-90deg, var(--primary), transparent);
+    display: none;
+    /* Removed the old right gradient to prioritize the flow */
 }
 
 .marquee-content {
@@ -651,7 +672,8 @@ section {
 }
 
 .university-logo {
-    height: 100px;
+    height: 80px;
+    /* Reduced vertical width */
     width: auto;
     margin: 0 40px;
     object-fit: contain;
@@ -665,7 +687,8 @@ section {
 }
 
 .university-logo.bmu-logo {
-    height: 140px;
+    height: 110px;
+    /* Reduced vertical width */
     margin: 0 50px;
 }
 
@@ -1633,5 +1656,100 @@ body.dark-theme .vision-pillar:hover {
 
     .expertise-section .interactive-card {
         max-width: 100%;
+    }
+}
+
+/* --- Premium Expertise Section Styles --- */
+.cert-card {
+    display: flex;
+    gap: 25px;
+    padding: 35px !important;
+    align-items: flex-start;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1) !important;
+}
+
+.cert-icon {
+    font-size: 2.5rem;
+    color: var(--accent);
+    padding: 15px;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    animation: gold-pulse 3s infinite;
+}
+
+.cert-badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cert-pill {
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.cert-pill strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 4px;
+}
+
+.cert-pill span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.cert-pill:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--accent);
+    transform: translateX(5px);
+}
+
+.impact-pillar-card {
+    position: relative;
+    padding: 40px !important;
+    overflow: hidden;
+}
+
+.pillar-bg-icon {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 8rem;
+    opacity: 0.03;
+    color: var(--accent);
+    transform: rotate(-15deg);
+}
+
+.pillar-footer {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.text-highlight {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .cert-badges {
+        grid-template-columns: 1fr;
+    }
+
+    .cert-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 }

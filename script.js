@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -100px 0px' });
 
-    const reveals = document.querySelectorAll('.card, .section-title, .hero-content, .premium-image-wrapper, .timeline-item, .programme-grid, .programme-card');
+    const reveals = document.querySelectorAll('.card:not(.about-portrait-card), .section-title, .hero-content, .timeline-item, .programme-grid, .programme-card, .vision-pillar, .impact-card, .future-vision-panel');
     reveals.forEach((el, index) => {
         el.classList.add('reveal');
         // Add staggering based on index within parent containers

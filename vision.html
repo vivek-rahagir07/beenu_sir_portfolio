@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -35,52 +36,69 @@
     </nav>
 
     <section class="page-header container" style="text-align: center;">
-        <h2 class="section-title" style="justify-content: center;">Our Vision</h2>
-        <p class="vision-subtitle">Strengthening Roots - Transforming Lives</p>
-        <div class="vision-pillars-container">
+        <h2 class="section-title reveal" style="justify-content: center;">Our Vision</h2>
+        <p class="vision-subtitle reveal stagger">Strengthening Roots - Transforming Lives</p>
+
+        <div class="vision-pillars-container stagger-reveal">
             <!-- Pillar 1 -->
-            <div class="vision-pillar">
+            <div class="vision-pillar reveal stagger">
                 <i class="fas fa-users-viewfinder vision-icon"></i>
                 <h3 class="vision-card-title">Generation of Visionaries</h3>
                 <p class="vision-card-text">
                     To shape a generation of <span class="vision-highlight">visionary leaders</span> who think with
-                    clarity, act with integrity, and lead with purpose — creating impact that is not temporary, but
-                    <span class="vision-highlight">transformational and sustainable</span>.
+                    clarity, act with integrity, and lead with purpose.
                 </p>
             </div>
 
             <!-- Pillar 2 -->
-            <div class="vision-pillar">
+            <div class="vision-pillar reveal stagger">
                 <i class="fas fa-gears vision-icon"></i>
                 <h3 class="vision-card-title">Disciplined Excellence</h3>
                 <p class="vision-card-text">
                     To simplify the world of business through <span class="vision-highlight">intelligent systems</span>,
-                    disciplined execution, and leadership rooted in values — proving that success does not require
-                    complexity, only <span class="vision-highlight">clarity and commitment</span>.
+                    disciplined execution, and leadership rooted in values.
                 </p>
             </div>
 
             <!-- Pillar 3 -->
-            <div class="vision-pillar">
+            <div class="vision-pillar reveal stagger">
                 <i class="fas fa-graduation-cap vision-icon"></i>
                 <h3 class="vision-card-title">Empowerment & Potential</h3>
                 <p class="vision-card-text">
                     To empower young minds with practical wisdom, <span class="vision-highlight">entrepreneurial
-                        courage</span>, and the confidence to build their own path — turning dependence into
-                    independence, and <span class="vision-highlight">potential into performance</span>.
+                        courage</span>, and the confidence to build their own path.
                 </p>
             </div>
 
             <!-- Pillar 4 -->
-            <div class="vision-pillar">
+            <div class="vision-pillar reveal stagger">
                 <i class="fas fa-building-columns vision-icon"></i>
                 <h3 class="vision-card-title">Institution Building</h3>
                 <p class="vision-card-text">
                     To build <span class="vision-highlight">institutions, ecosystems, and opportunities</span> that
-                    nurture talent, unlock capability, and convert ambition into measurable, <span
-                        class="vision-highlight">meaningful success</span>.
+                    nurture talent and unlock capability.
                 </p>
             </div>
+        </div>
+
+        <div class="future-vision-panel glass reveal stagger"
+            style="margin-top: 80px; padding: 40px; text-align: left; max-width: 900px; margin-left: auto; margin-right: auto;">
+            <h3 style="color: var(--accent); margin-bottom: 20px; font-family: 'Playfair Display', serif;">Future Vision
+                & Legacy</h3>
+            <p style="color: var(--text-muted); line-height: 1.8;">
+                Looking ahead, Beenu Kumar Taneja continues to expand his influence as a mentor, educator, and thought
+                leader. His ongoing research pursuits and training innovations suggest a future where structured
+                coaching and behavioural development play a central role in shaping the leaders of tomorrow.
+            </p>
+            <p style="color: var(--text-muted); margin-top: 15px; font-style: italic;">
+                "The goal is not just temporary change, but transformational success that stands the test of time."
+            </p>
+        </div>
+        <div class="floating-particles" style="top: 0; left: 0; z-index: -1;">
+            <span class="p-square"></span>
+            <span class="p-square"></span>
+            <span class="p-square"></span>
+            <span class="p-square"></span>
         </div>
     </section>
 

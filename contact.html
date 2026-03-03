@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -35,9 +36,9 @@
     </nav>
 
     <section class="page-header container">
-        <h2 class="section-title">Connect with Me</h2>
+        <h2 class="section-title reveal">Connect with Me</h2>
 
-        <div class="carousel-container glass">
+        <div class="carousel-container glass reveal stagger-reveal">
             <div class="carousel-track">
                 <!-- LinkedIn Slide -->
                 <div class="carousel-slide active">
@@ -85,8 +86,8 @@
             </div>
         </div>
 
-        <div class="grid" style="margin-top: 60px;">
-            <div class="card glass">
+        <div class="grid stagger-reveal" style="margin-top: 60px;">
+            <div class="card glass reveal stagger">
                 <h3>Contact Details</h3>
                 <ul class="detail-list">
                     <li>
@@ -104,7 +105,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="card glass">
+            <div class="card glass reveal stagger">
                 <h3>Direct Inquiry</h3>
                 <form onsubmit="event.preventDefault(); alert('Message sent successfully!');">
                     <input type="text" placeholder="Your Name"
@@ -128,8 +129,7 @@
                     class="fab fa-instagram"></i></a>
             <a href="https://x.com/TanejaBeenu" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        </div>
-        <a href="#" aria-label="IMDB"><i class="fab fa-imdb"></i></a>
+            <a href="#" aria-label="IMDB"><i class="fab fa-imdb"></i></a>
         </div>
         <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.8rem;">&copy; 2024 Beenu Kumar Taneja. All
             Rights Reserved.</p>
