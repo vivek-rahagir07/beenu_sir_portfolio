@@ -193,7 +193,7 @@ nav.scrolled {
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding: 0 5%;
+    padding: 100px 5% 0 5%;
 }
 
 .hero::before {
@@ -582,19 +582,74 @@ section {
 
 /* Ensure the marquee content is duplicated for seamless looping */
 
-.card {
-    padding: 30px;
-    border-radius: 8px;
+/* Programme Details Section */
+.programme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.programme-card {
+    padding: 35px;
+    border-radius: 20px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.programme-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.05), transparent);
+    z-index: -1;
+}
+
+.programme-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(212, 175, 55, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.programme-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
     transition: var(--transition);
 }
 
-.card:hover {
-    transform: translateY(-10px);
+.programme-card:hover .programme-icon {
+    background: var(--accent);
+    color: var(--primary);
+    transform: rotate(10deg);
 }
 
-.card h3 {
-    color: var(--accent);
-    margin-bottom: 15px;
+.programme-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.programme-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .grid {

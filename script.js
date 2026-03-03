@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    const reveals = document.querySelectorAll('.card, .section-title, .hero-content, .premium-image-wrapper, .timeline-item');
+    const reveals = document.querySelectorAll('.card, .section-title, .hero-content, .premium-image-wrapper, .timeline-item, .programme-grid, .programme-card');
     reveals.forEach((el, index) => {
         el.classList.add('reveal');
         // Add staggering based on index within parent containers
