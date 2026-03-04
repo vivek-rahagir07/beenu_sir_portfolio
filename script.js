@@ -237,4 +237,34 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'ArrowRight' && nextBtnL) nextBtnL.click();
         });
     }
+
+    // --- Mobile Navigation ---
+    const setupMobileNav = () => {
+        const nav = document.getElementById('navbar');
+        if (!nav) return;
+
+        const mobileBtn = document.createElement('div');
+        mobileBtn.className = 'mobile-menu-btn';
+        mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        nav.appendChild(mobileBtn);
+
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileBtn.innerHTML = navLinks.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    };
+
+    setupMobileNav();
+
 });

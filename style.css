@@ -14,20 +14,6 @@
     --glass-grad: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
 }
 
-body.dark-theme {
-    --primary: #000000;
-    --secondary: #0a0a0a;
-    --accent: #c5a021;
-    --accent-rgb: 197, 160, 33;
-    --text-light: #fcfcfc;
-    --text-muted: #a1a1a1;
-    --bg-overlay: rgba(0, 0, 0, 0.95);
-    --glass: rgba(10, 10, 10, 0.8);
-    --orb-color: rgba(197, 160, 33, 0.05);
-    --glass-border: rgba(197, 160, 33, 0.12);
-    --glass-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-    --glass-grad: linear-gradient(135deg, rgba(15, 15, 15, 0.9), rgba(5, 5, 5, 0.9));
-}
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
 
@@ -297,6 +283,16 @@ nav.scrolled .nav-links a {
     color: #ffffff;
 }
 
+/* Force high contrast on transparent nav for dark backgrounds */
+nav:not(.scrolled) .nav-links a {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav:not(.scrolled) .nav-links a.active {
+    color: var(--accent);
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -307,8 +303,8 @@ nav.scrolled .nav-links a {
     height: 50px;
     /* Sleeker premium signature */
     width: auto;
-    /* Default: Black (for light themes / non-scrolled transparent nav) */
-    filter: brightness(0);
+    /* On dark backgrounds (like hero), logo should be white with signature glow */
+    filter: brightness(0) invert(1);
     transition: var(--transition);
 }
 
@@ -394,8 +390,8 @@ nav.scrolled .signature-logo {
     height: 100%;
     background: url('assets/images/hero.png') no-repeat center center;
     background-size: cover;
-    opacity: 0.6;
-    /* Increased opacity for better visibility */
+    opacity: 1;
+    filter: brightness(0.7);
     z-index: -2;
 }
 
@@ -415,6 +411,8 @@ nav.scrolled .signature-logo {
     margin-bottom: 20px;
     line-height: 1;
     font-style: italic;
+    color: #ffffff;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hero-content span {
@@ -424,8 +422,9 @@ nav.scrolled .signature-logo {
 
 .hero-content p {
     font-size: 1.2rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 30px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .btn {
@@ -438,12 +437,29 @@ nav.scrolled .signature-logo {
     font-weight: 600;
     transition: var(--transition);
     display: inline-block;
+    cursor: pointer;
 }
 
 .btn:hover {
     background: rgba(var(--accent-rgb), 0.05);
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.15);
+}
+
+.hero .btn {
+    border-radius: 50px;
+    padding: 14px 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: #ffffff;
+    border: 1.5px solid var(--accent);
+}
+
+.hero .btn:hover {
+    background: var(--accent);
+    color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(var(--accent-rgb), 0.3);
 }
 
 .hero-content p .typewriter {
@@ -2126,5 +2142,129 @@ body.dark-theme .vision-pillar:hover {
 @media (max-width: 600px) {
     .gallery-grid {
         columns: 1;
+    }
+}
+
+/* --- Premium Mobile Navigation & Adjustments --- */
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    font-size: 1.8rem;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 2100;
+    transition: var(--transition);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 900px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-overlay);
+        backdrop-filter: blur(20px);
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        transform: translateY(-100%);
+        transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        z-index: 2000;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links li {
+        margin: 0;
+        transform: translateY(30px);
+        opacity: 0;
+        transition: 0.4s ease;
+    }
+
+    .nav-links.active li {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    /* Staggered text links */
+    .nav-links.active li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-links.active li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.active li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-links.active li:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+
+    .nav-links.active li:nth-child(5) {
+        transition-delay: 0.5s;
+    }
+
+    .nav-links.active li:nth-child(6) {
+        transition-delay: 0.6s;
+    }
+
+    .nav-links.active li:nth-child(7) {
+        transition-delay: 0.7s;
+    }
+
+    .nav-links a {
+        font-size: 2rem;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .radial-contact-container {
+        transform: scale(0.8);
+        margin: 40px auto;
+    }
+}
+
+/* Hero Optimization for Mobile */
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .signature-logo {
+        max-width: 250px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* About Page Optimization */
+@media (max-width: 768px) {
+    .about-portrait-card {
+        max-width: 100%;
+        margin-bottom: 30px;
     }
 }
