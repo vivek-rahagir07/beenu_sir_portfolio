@@ -838,24 +838,20 @@ section {
 /* Logo Marquee */
 .logo-marquee {
     width: 90%;
-    /* Decreased from 100% */
     max-width: 1200px;
-    /* Constrained max-width */
     margin: 80px auto;
-    /* Slightly reduced vertical margin */
     overflow: hidden;
     background: var(--primary);
-    padding: 25px 0;
-    /* Decreased vertical width (height) */
+    padding: 40px 0;
     position: relative;
     border: 1px solid var(--glass-border);
-    /* Full border for better container feel */
     border-radius: 40px;
-    /* Rounded corners for premium feel */
     display: flex;
     align-items: center;
-    /* Golden Glow Flow */
     box-shadow: 0 0 50px rgba(var(--accent-rgb), 0.1);
+    /* Edge Masking for buttery-smooth entry/exit */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .logo-marquee::before {
@@ -894,7 +890,9 @@ section {
 .marquee-content {
     display: flex;
     width: max-content;
-    animation: marquee 30s linear infinite;
+    animation: marquee 40s linear infinite;
+    /* Slightly slower for "drifting" feel */
+    will-change: transform;
 }
 
 .university-logo {
@@ -919,19 +917,21 @@ section {
 }
 
 .marquee-strip {
-    height: 180px;
-    /* Larger size to fill the strip */
+    height: 140px;
+    /* Refined height */
     display: block;
     object-fit: contain;
-    padding: 0;
-    /* Remove padding for seamless loop */
-    filter: brightness(1.2) contrast(1.1);
-    transition: var(--transition);
+    padding: 0 40px;
+    /* Add spacing between strips */
+    filter: brightness(1.2) contrast(1.1) grayscale(0.5);
+    opacity: 0.8;
+    transition: all 0.4s ease;
 }
 
 .marquee-strip:hover {
-    filter: brightness(1.2) contrast(1.2);
-    transform: scale(1.05);
+    filter: brightness(1) contrast(1) grayscale(0);
+    opacity: 1;
+    transform: scale(1.02);
 }
 
 @keyframes marquee {
