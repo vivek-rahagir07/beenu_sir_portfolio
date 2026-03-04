@@ -406,7 +406,7 @@ nav.scrolled .nav-links a {
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding: 180px 5% 40px 5%;
+    padding: 300px 5% 40px 5%;
 }
 
 .hero::before {
@@ -1419,7 +1419,7 @@ footer {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding-top: 130px;
+        padding-top: 180px;
     }
 
     .hero-content h1 {
