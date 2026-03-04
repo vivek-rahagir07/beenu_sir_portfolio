@@ -252,44 +252,66 @@ body::before {
 /* Navigation */
 nav {
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
     z-index: 1000;
-    padding: 15px 50px;
-    /* Sleek premium feel */
-    min-height: 80px;
-    /* Elegant mid-point height */
+    padding: 8px 35px;
+    min-height: 55px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: var(--transition);
+    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.4s ease,
+        padding 0.4s ease,
+        backdrop-filter 0.4s ease,
+        box-shadow 0.4s ease;
+    will-change: top, width, background, padding;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* Shimmer Animation Effect */
+nav::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transform: rotate(45deg);
+    transition: 0.8s ease;
+    pointer-events: none;
+}
+
+nav:hover::after {
+    left: 100%;
 }
 
 nav.scrolled {
-    background: rgba(0, 0, 0, 0.85);
-    padding: 15px 50px;
-    /* Locked sleek padding */
-    min-height: 80px;
-    /* Locked sleek height */
-    backdrop-filter: blur(15px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    top: 2px;
+    width: 95%;
+    background: rgba(10, 10, 10, 0.82);
+    backdrop-filter: blur(35px) saturate(160%);
+    -webkit-backdrop-filter: blur(35px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    padding: 8px 40px;
 }
 
 nav.scrolled .logo {
-    color: var(--accent);
-}
-
-nav.scrolled .nav-links a {
-    color: #ffffff;
-}
-
-/* Force high contrast on transparent nav for dark backgrounds */
-nav:not(.scrolled) .nav-links a {
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-nav:not(.scrolled) .nav-links a.active {
     color: var(--accent);
 }
 
@@ -300,26 +322,17 @@ nav:not(.scrolled) .nav-links a.active {
 }
 
 .signature-logo {
-    height: 50px;
-    /* Sleeker premium signature */
+    height: 42px;
     width: auto;
-    /* On dark backgrounds (like hero), logo should be white with signature glow */
-    filter: brightness(0) invert(1);
-    transition: var(--transition);
+    filter: brightness(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.4s ease;
 }
 
-/* On Dark Themes (Home Page) where the background is black, signature should be white by default */
-body.dark-theme nav:not(.scrolled) .signature-logo {
-    filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(212, 175, 55, 0.2));
-    animation: signature-glow 3s ease-in-out infinite alternate;
-}
-
-/* When the navbar turns black (nav.scrolled), signature always turns white with glow */
+/* Elegant scroll transition for logo */
 nav.scrolled .signature-logo {
-    height: 50px;
-    /* Locked to sleek scale */
-    filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
-    animation: signature-glow 3s ease-in-out infinite alternate;
+    filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(var(--accent-rgb), 0.5));
+    transform: scale(0.9);
 }
 
 @keyframes signature-glow {
@@ -332,40 +345,55 @@ nav.scrolled .signature-logo {
     }
 }
 
+/* Navbar link colors & premium typography */
 .nav-links {
     display: flex;
     list-style: none;
     gap: 30px;
+    align-items: center;
 }
 
 .nav-links a {
+    color: #1a1a1a;
     text-decoration: none;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: var(--transition);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    padding: 5px 0;
+    opacity: 0.8;
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: var(--transition);
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    width: 100%;
+nav.scrolled .nav-links a {
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 0.9;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--accent);
+    opacity: 1;
+    letter-spacing: 0.25em;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.6);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
 }
 
 /* Hero Section */
@@ -378,7 +406,7 @@ nav.scrolled .signature-logo {
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding: 100px 5% 0 5%;
+    padding: 180px 5% 40px 5%;
 }
 
 .hero::before {
@@ -388,7 +416,7 @@ nav.scrolled .signature-logo {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('assets/images/hero.png') no-repeat center center;
+    background: url('assets/images/hero.png') no-repeat center top;
     background-size: cover;
     opacity: 1;
     filter: brightness(0.7);
@@ -1391,7 +1419,7 @@ footer {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding-top: 100px;
+        padding-top: 130px;
     }
 
     .hero-content h1 {
@@ -1403,7 +1431,8 @@ footer {
     }
 
     nav {
-        padding: 15px 20px;
+        padding: 5px 15px;
+        width: 95%;
         /* Maintain sleek presence on mobile */
     }
 }
@@ -2148,15 +2177,16 @@ body.dark-theme .vision-pillar:hover {
 /* --- Premium Mobile Navigation & Adjustments --- */
 .mobile-menu-btn {
     display: none;
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    font-size: 1.8rem;
-    color: #ffffff;
+    font-size: 1.5rem;
+    color: #1a1a1a;
     cursor: pointer;
     z-index: 2100;
-    transition: var(--transition);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+    padding: 10px;
+}
+
+nav.scrolled .mobile-menu-btn {
+    color: #ffffff;
 }
 
 @media (max-width: 900px) {
