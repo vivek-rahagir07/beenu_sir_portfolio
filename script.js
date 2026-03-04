@@ -1,4 +1,29 @@
 /* Enhanced Global Interactions */
+(function () {
+    const loaderSeen = sessionStorage.getItem('preloaderSeen');
+    if (loaderSeen) {
+        // If already seen in this session, hide loader immediately to prevent flash
+        document.write('<style>#pre-loader { display: none !important; }</style>');
+    }
+})();
+
+window.addEventListener('load', () => {
+    const loader = document.getElementById('pre-loader');
+    if (loader) {
+        if (sessionStorage.getItem('preloaderSeen')) {
+            loader.style.display = 'none';
+        } else {
+            setTimeout(() => {
+                loader.classList.add('fade-out');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    sessionStorage.setItem('preloaderSeen', 'true');
+                }, 800);
+            }, 2200); // Allow animation to complete
+        }
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // Navigation Scroll Effect
     window.addEventListener('scroll', () => {
