@@ -1,31 +1,46 @@
 /* Enhanced Global Interactions */
 (function () {
-    const loaderSeen = sessionStorage.getItem('preloaderSeen');
-    if (loaderSeen) {
-        // If already seen in this session, hide loader immediately to prevent flash
-        document.write('<style>#pre-loader { display: none !important; }</style>');
-    }
+    const theme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
 })();
 
 window.addEventListener('load', () => {
     const loader = document.getElementById('pre-loader');
     if (loader) {
-        if (sessionStorage.getItem('preloaderSeen')) {
+        loader.classList.add('fade-out');
+        setTimeout(() => {
             loader.style.display = 'none';
-        } else {
-            setTimeout(() => {
-                loader.classList.add('fade-out');
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    sessionStorage.setItem('preloaderSeen', 'true');
-                }, 800);
-            }, 2200); // Allow animation to complete
-        }
+        }, 800);
     }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Theme Toggle Implementation
+    const setupThemeToggle = () => {
+        const nav = document.getElementById('navbar');
+        if (!nav) return;
+
+        const toggle = document.createElement('button');
+        toggle.className = 'theme-toggle';
+        toggle.setAttribute('aria-label', 'Toggle dark mode');
+        toggle.innerHTML = localStorage.getItem('theme') === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+
+        nav.appendChild(toggle);
+
+        toggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            toggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+    };
+
+    setupThemeToggle();
+
     // Navigation Scroll Effect
+    const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');

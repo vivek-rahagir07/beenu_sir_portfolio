@@ -12,6 +12,27 @@
     --glass-border: rgba(176, 141, 26, 0.15);
     --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     --glass-grad: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    --card-bg: #ffffff;
+    --nav-bg: rgba(255, 255, 255, 0.65);
+}
+
+[data-theme="dark"] {
+    --primary: #0a0a0a;
+    --secondary: #121212;
+    --text-light: #f8fafc;
+    --text-muted: #94a3b8;
+    --bg-overlay: rgba(10, 10, 10, 0.95);
+    --glass: rgba(20, 20, 20, 0.7);
+    --orb-color: rgba(176, 141, 26, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    --glass-grad: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.8));
+    --card-bg: #1a1a1a;
+    --nav-bg: rgba(10, 10, 10, 0.75);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* --- Signature Pre-loader --- */
@@ -209,10 +230,84 @@ body::before {
     background: var(--accent);
 }
 
+/* Utility Classes for Refactoring */
+.text-accent {
+    color: var(--accent);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.m-bottom-sm {
+    margin-bottom: 10px;
+}
+
+.m-bottom-md {
+    margin-bottom: 25px;
+}
+
+.m-bottom-lg {
+    margin-bottom: 40px;
+}
+
+.m-top-sm {
+    margin-top: 15px;
+}
+
+.m-top-md {
+    margin-top: 40px;
+}
+
+.gap-md {
+    gap: 20px;
+}
+
+.gap-lg {
+    gap: 40px;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.font-mono {
+    font-family: monospace;
+}
+
+.text-xl {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.text-lg {
+    font-size: 1.1rem;
+}
+
+.op-9 {
+    opacity: 0.9;
+}
+
 /* Glassmorphism Utilities */
 .glass {
     background: var(--glass-grad);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
     border-radius: 30px;
@@ -370,6 +465,27 @@ nav {
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     overflow: hidden;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 20px;
+    transition: var(--transition);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    background: rgba(var(--accent-rgb), 0.1);
+    color: var(--accent);
 }
 
 /* Shimmer Animation Effect */

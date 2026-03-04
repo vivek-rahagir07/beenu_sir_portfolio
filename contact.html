@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact Beenu Kumar Taneja for Corporate Training and Coaching.">
+    <!-- SEO & Social Media Meta Tags -->
+    <meta property="og:title" content="Contact | Beenu Kumar Taneja">
+    <meta property="og:description"
+        content="Connect with Beenu Kumar Taneja for transformative coaching and leadership development.">
+    <meta property="og:image" content="assets/images/about_portrait.png">
+    <meta name="twitter:card" content="summary_large_image">
+
     <title>Contact | Beenu Kumar Taneja</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,9 +37,9 @@
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar">
-        <a href="index.html" class="logo">
-            <img src="assets/images/signature.png" alt="Signature" class="signature-logo">
+    <nav id="navbar" aria-label="Main Navigation">
+        <a href="index.html" class="logo" aria-label="Beenu Kumar Taneja Home">
+            <img src="assets/images/signature.png" alt="Beenu Kumar Taneja Signature" class="signature-logo">
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -50,7 +57,7 @@
 
         <div class="radial-contact-container reveal stagger-reveal">
             <div class="contact-center">
-                <img src="assets/contact.png" alt="Contact Beenu" class="center-img">
+                <img src="assets/contact.png" alt="Contact Beenu Kumar Taneja" class="center-img" loading="lazy">
                 <div class="center-glow"></div>
             </div>
 
@@ -91,21 +98,21 @@
             </div>
         </div>
 
-        <div class="grid stagger-reveal" style="margin-top: 60px;">
+        <div class="grid stagger-reveal m-top-md">
             <div class="card glass reveal stagger">
                 <h3>Contact Details</h3>
                 <ul class="detail-list">
                     <li>
-                        <i class="fas fa-phone-alt" style="color: var(--accent);"></i>
+                        <i class="fas fa-phone-alt text-accent"></i>
                         <a href="tel:8743088888" style="color: inherit; text-decoration: none;">87430 88888</a>
                     </li>
                     <li>
-                        <i class="fas fa-envelope" style="color: var(--accent);"></i>
+                        <i class="fas fa-envelope text-accent"></i>
                         <a href="mailto:beenu.taneja@gmail.com"
                             style="color: inherit; text-decoration: none;">beenu.taneja@gmail.com</a>
                     </li>
                     <li>
-                        <i class="fas fa-map-marker-alt" style="color: var(--accent);"></i>
+                        <i class="fas fa-map-marker-alt text-accent"></i>
                         <span>New Delhi, India</span>
                     </li>
                 </ul>
@@ -113,13 +120,13 @@
             <div class="card glass reveal stagger">
                 <h3>Direct Inquiry</h3>
                 <form onsubmit="event.preventDefault(); alert('Message sent successfully!');">
-                    <input type="text" placeholder="Your Name"
-                        style="width: 100%; padding: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: white;">
-                    <input type="email" placeholder="Your Email"
-                        style="width: 100%; padding: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: white;">
-                    <textarea placeholder="Your Message" rows="5"
-                        style="width: 100%; padding: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: white;"></textarea>
-                    <button type="submit" class="btn" style="width: 100%; cursor: pointer;">Send Message</button>
+                    <input type="text" placeholder="Your Name" class="w-full"
+                        style="padding: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: white;">
+                    <input type="email" placeholder="Your Email" class="w-full"
+                        style="padding: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: white;">
+                    <textarea placeholder="Your Message" rows="5" class="w-full"
+                        style="padding: 12px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: white;"></textarea>
+                    <button type="submit" class="btn w-full">Send Message</button>
                 </form>
             </div>
         </div>
