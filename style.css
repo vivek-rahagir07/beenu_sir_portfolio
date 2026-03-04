@@ -958,23 +958,7 @@ section {
     }
 }
 
-/* Custom Cursor */
-.custom-cursor {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    transition: transform 0.1s ease, background 0.3s ease;
-    transform: translate(-50%, -50%);
-}
 
-.custom-cursor.hover {
-    transform: translate(-50%, -50%) scale(2.5);
-    background: rgba(var(--accent-rgb), 0.1);
-}
 
 /* About Page Enhancement - Rahagir Style */
 .about-wrapper {
