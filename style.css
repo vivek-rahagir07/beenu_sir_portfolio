@@ -1411,10 +1411,11 @@ footer {
     margin-bottom: 60px;
 }
 
-.footer-brand h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: var(--accent);
+.footer-brand .footer-signature {
+    height: 50px;
+    width: auto;
+    margin-bottom: 25px;
+    filter: brightness(0);
 }
 
 .footer-brand p {
