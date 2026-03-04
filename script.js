@@ -265,6 +265,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // --- Stat Counter Animation ---
+    const animateCounters = () => {
+        const stats = document.querySelectorAll('.stat-number');
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const endValue = parseInt(target.textContent.replace(/,/g, ''));
+                    if (isNaN(endValue)) return;
+
+                    let startValue = 0;
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    const updateCount = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        // Ease out quad
+                        const easeProgress = progress * (2 - progress);
+
+                        const currentCount = Math.floor(easeProgress * endValue);
+                        target.textContent = currentCount.toLocaleString() + (target.textContent.includes('+') ? '+' : '');
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        }
+                    };
+
+                    requestAnimationFrame(updateCount);
+                    countObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        stats.forEach(stat => countObserver.observe(stat));
+    };
+
+    animateCounters();
+
     setupMobileNav();
 
 });
